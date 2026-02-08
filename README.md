@@ -1,2 +1,3 @@
-# super-cart-dasher
-Super Cart Dasher game
+# Super Cart Dasher
+
+Monorepo skeleton for a PhaserJS game (client) and infra tooling.

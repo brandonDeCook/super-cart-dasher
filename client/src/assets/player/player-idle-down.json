@@ -1,0 +1,50 @@
+{ "frames": {
+   "player-idle-down 0.aseprite": {
+    "frame": { "x": 0, "y": 0, "w": 34, "h": 94 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 34, "h": 94 },
+    "sourceSize": { "w": 34, "h": 94 },
+    "duration": 100
+   },
+   "player-idle-down 1.aseprite": {
+    "frame": { "x": 34, "y": 0, "w": 34, "h": 94 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 34, "h": 94 },
+    "sourceSize": { "w": 34, "h": 94 },
+    "duration": 100
+   },
+   "player-idle-down 2.aseprite": {
+    "frame": { "x": 68, "y": 0, "w": 34, "h": 94 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 34, "h": 94 },
+    "sourceSize": { "w": 34, "h": 94 },
+    "duration": 100
+   },
+   "player-idle-down 3.aseprite": {
+    "frame": { "x": 102, "y": 0, "w": 34, "h": 94 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 34, "h": 94 },
+    "sourceSize": { "w": 34, "h": 94 },
+    "duration": 100
+   }
+ },
+ "meta": {
+  "app": "https://www.aseprite.org/",
+  "version": "1.3.16.1-x64",
+  "image": "player-idle-down.png",
+  "format": "RGBA8888",
+  "size": { "w": 136, "h": 94 },
+  "scale": "1",
+  "frameTags": [
+  ],
+  "layers": [
+   { "name": "Sprite Sheet", "opacity": 255, "blendMode": "normal" }
+  ],
+  "slices": [
+  ]
+ }
+}

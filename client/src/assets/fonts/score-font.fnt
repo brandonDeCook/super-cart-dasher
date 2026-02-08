@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<font>
+  <info face="score-font" size="16" bold="0" italic="0" charset="" unicode="1" stretchH="100" smooth="0" aa="0" padding="0,0,0,0" spacing="0,0"/>
+  <common lineHeight="16" base="16" scaleW="64" scaleH="48" pages="1" packed="0"/>
+  <pages>
+    <page id="0" file="score-font.png"/>
+  </pages>
+  <chars count="11">
+    <!-- Row 0 (y=0): 0 1 2 3 -->
+    <char id="48" x="0"  y="0"  width="16" height="16" xoffset="0" yoffset="0" xadvance="16" page="0" chnl="15"/>
+    <char id="49" x="16" y="0"  width="16" height="16" xoffset="0" yoffset="0" xadvance="16" page="0" chnl="15"/>
+    <char id="50" x="32" y="0"  width="16" height="16" xoffset="0" yoffset="0" xadvance="16" page="0" chnl="15"/>
+    <char id="51" x="48" y="0"  width="16" height="16" xoffset="0" yoffset="0" xadvance="16" page="0" chnl="15"/>
+
+    <!-- Row 1 (y=16): 4 5 6 7 -->
+    <char id="52" x="0"  y="16" width="16" height="16" xoffset="0" yoffset="0" xadvance="16" page="0" chnl="15"/>
+    <char id="53" x="16" y="16" width="16" height="16" xoffset="0" yoffset="0" xadvance="16" page="0" chnl="15"/>
+    <char id="54" x="32" y="16" width="16" height="16" xoffset="0" yoffset="0" xadvance="16" page="0" chnl="15"/>
+    <char id="55" x="48" y="16" width="16" height="16" xoffset="0" yoffset="0" xadvance="16" page="0" chnl="15"/>
+
+    <!-- Row 2 (y=32): 8 9 : -->
+    <char id="56" x="0"  y="32" width="16" height="16" xoffset="0" yoffset="0" xadvance="16" page="0" chnl="15"/>
+    <char id="57" x="16" y="32" width="16" height="16" xoffset="0" yoffset="0" xadvance="16" page="0" chnl="15"/>
+    <char id="58" x="32" y="32" width="16" height="16" xoffset="0" yoffset="0" xadvance="16" page="0" chnl="15"/>
+  </chars>
+</font>

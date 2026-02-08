@@ -1,0 +1,82 @@
+{ "frames": {
+   "player-walk-left-right-speed-effect 0.aseprite": {
+    "frame": { "x": 0, "y": 0, "w": 136, "h": 66 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 136, "h": 66 },
+    "sourceSize": { "w": 136, "h": 66 },
+    "duration": 100
+   },
+   "player-walk-left-right-speed-effect 1.aseprite": {
+    "frame": { "x": 136, "y": 0, "w": 136, "h": 66 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 136, "h": 66 },
+    "sourceSize": { "w": 136, "h": 66 },
+    "duration": 100
+   },
+   "player-walk-left-right-speed-effect 2.aseprite": {
+    "frame": { "x": 272, "y": 0, "w": 136, "h": 66 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 136, "h": 66 },
+    "sourceSize": { "w": 136, "h": 66 },
+    "duration": 100
+   },
+   "player-walk-left-right-speed-effect 3.aseprite": {
+    "frame": { "x": 408, "y": 0, "w": 136, "h": 66 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 136, "h": 66 },
+    "sourceSize": { "w": 136, "h": 66 },
+    "duration": 100
+   },
+   "player-walk-left-right-speed-effect 4.aseprite": {
+    "frame": { "x": 544, "y": 0, "w": 136, "h": 66 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 136, "h": 66 },
+    "sourceSize": { "w": 136, "h": 66 },
+    "duration": 100
+   },
+   "player-walk-left-right-speed-effect 5.aseprite": {
+    "frame": { "x": 680, "y": 0, "w": 136, "h": 66 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 136, "h": 66 },
+    "sourceSize": { "w": 136, "h": 66 },
+    "duration": 100
+   },
+   "player-walk-left-right-speed-effect 6.aseprite": {
+    "frame": { "x": 816, "y": 0, "w": 136, "h": 66 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 136, "h": 66 },
+    "sourceSize": { "w": 136, "h": 66 },
+    "duration": 100
+   },
+   "player-walk-left-right-speed-effect 7.aseprite": {
+    "frame": { "x": 952, "y": 0, "w": 136, "h": 66 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 136, "h": 66 },
+    "sourceSize": { "w": 136, "h": 66 },
+    "duration": 100
+   }
+ },
+ "meta": {
+  "app": "https://www.aseprite.org/",
+  "version": "1.3.16.1-x64",
+  "image": "player-walk-left-right-speed-effect.png",
+  "format": "RGBA8888",
+  "size": { "w": 1088, "h": 66 },
+  "scale": "1",
+  "frameTags": [
+  ],
+  "layers": [
+   { "name": "Sprite Sheet", "opacity": 255, "blendMode": "normal" }
+  ],
+  "slices": [
+  ]
+ }
+}

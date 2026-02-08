@@ -1,0 +1,24 @@
+name: deploy
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          name: client-dist
+          path: client/dist
+      - name: Deploy infra
+        run: |
+          echo "Deploying infra (placeholder)"
+          ls -la infra
+      - name: Deploy client game
+        run: |
+          echo "Deploying client artifact (placeholder)"
+          ls -la client/dist
