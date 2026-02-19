@@ -3,7 +3,8 @@ import Phaser from "phaser";
 const WALK_SPEED = 120;
 const DASH_SPEED = 200;
 const SPEED_STEPS = [1, 1.25, 1.5, 1.75, 2, 2.25];
-const SPEED_BOOST_WINDOW_MS = 2500;
+const SPEED_BOOST_WINDOW_MS = 2000;
+const MAX_SPEED_DECAY_MS = 3000;
 const SPEED_BOOST_MULTIPLIERS = [1, 1.25, 1.5, 1.75, 2, 3];
 const WALK_SPEEDS = SPEED_STEPS.map((step) => WALK_SPEED * step);
 const DASH_SPEEDS = SPEED_STEPS.map((step) => DASH_SPEED * step);
@@ -293,7 +294,10 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
       return;
     }
     const lastDecay = this.lastSpeedDecayAt || this.lastGemCollectedAt;
-    if (now - lastDecay < SPEED_BOOST_WINDOW_MS) {
+    const maxTier = SPEED_BOOST_MULTIPLIERS.length - 1;
+    const decayWindow =
+      this.speedBoostTier >= maxTier ? MAX_SPEED_DECAY_MS : SPEED_BOOST_WINDOW_MS;
+    if (now - lastDecay < decayWindow) {
       return;
     }
     this.speedBoostTier = Math.max(0, this.speedBoostTier - 1);

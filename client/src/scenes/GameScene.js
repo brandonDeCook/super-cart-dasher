@@ -350,7 +350,7 @@ export default class GameScene extends Phaser.Scene {
     this.scoreValue += Math.round(25 * multiplier);
     this.updateScoreUI();
 
-    const rate = multiplier;
+    const rate = 0.6 + (multiplier - 1) * 0.45;
     if (this.gemPickupSound) {
       if (this.gemPickupSound.isPlaying) {
         this.gemPickupSound.stop();
