@@ -28,6 +28,34 @@ export default class GameScene extends Phaser.Scene {
       props?.setScale(WORLD_SCALE);
     }
 
+    const collidablesLayer = map.getObjectLayer("props-collisions");
+    if (collidablesLayer) {
+      this.collidablesGroup = this.physics.add.staticGroup();
+      collidablesLayer.objects.forEach((obj) => {
+        let cx, cy, bw, bh;
+        if (obj.polygon) {
+          const xs = obj.polygon.map((p) => p.x);
+          const ys = obj.polygon.map((p) => p.y);
+          const minX = Math.min(...xs);
+          const maxX = Math.max(...xs);
+          const minY = Math.min(...ys);
+          const maxY = Math.max(...ys);
+          bw = (maxX - minX) * WORLD_SCALE;
+          bh = (maxY - minY) * WORLD_SCALE;
+          cx = (obj.x + minX + (maxX - minX) / 2) * WORLD_SCALE;
+          cy = (obj.y + minY + (maxY - minY) / 2) * WORLD_SCALE;
+        } else {
+          bw = obj.width * WORLD_SCALE;
+          bh = obj.height * WORLD_SCALE;
+          cx = obj.x * WORLD_SCALE + bw / 2;
+          cy = obj.y * WORLD_SCALE + bh / 2;
+        }
+        const zone = this.add.zone(cx, cy, bw, bh);
+        this.physics.add.existing(zone, true);
+        this.collidablesGroup.add(zone);
+      });
+    }
+
     const mapW = 2880;
     const mapH = 1920;
 
@@ -192,6 +220,20 @@ export default class GameScene extends Phaser.Scene {
     });
 
     this.physics.add.overlap(this.player, this.gemGroup, this.onGemOverlap, null, this);
+
+    if (this.collidablesGroup) {
+      this.physics.add.collider(this.player, this.collidablesGroup);
+    }
+
+    const debugKey = this.input.keyboard.addKey(192); // ` / ~
+    debugKey.on("down", () => {
+      this.physics.world.drawDebug = !this.physics.world.drawDebug;
+      if (this.physics.world.drawDebug) {
+        this.physics.world.createDebugGraphic();
+      } else if (this.physics.world.debugGraphic) {
+        this.physics.world.debugGraphic.clear();
+      }
+    });
   }
 
   toggleGroceryCard() {

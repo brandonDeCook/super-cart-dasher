@@ -9,6 +9,11 @@ const SPEED_BOOST_MULTIPLIERS = [1, 1.25, 1.5, 1.75, 2, 3];
 const WALK_SPEEDS = SPEED_STEPS.map((step) => WALK_SPEED * step);
 const DASH_SPEEDS = SPEED_STEPS.map((step) => DASH_SPEED * step);
 
+// Tune these to align the hitbox with the cart in the sprite.
+const BODY_SIZE = 26;
+const BODY_OFFSET_X = 0; // positive = shift right relative to sprite center
+const BODY_OFFSET_Y = 8; // positive = shift down relative to sprite center
+
 const ensureAnims = (scene) => {
   const anims = scene.anims;
 
@@ -66,9 +71,6 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
     this.setDepth(10);
     this.setScale(scale);
     this.setCollideWorldBounds(true);
-    if (this.body) {
-      this.body.setSize(this.width, this.height, true);
-    }
 
     this.cursors = scene.input.keyboard.createCursorKeys();
     this.shiftKey = scene.input.keyboard.addKey("SHIFT");
@@ -81,7 +83,6 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
     this.isMoving = false;
     this.speedTier = 0;
     this.visualOffsetX = 0;
-    this.useDashHitboxOffset = false;
     this.speedBoostTier = 0;
     this.lastGemCollectedAt = 0;
     this.lastSpeedDecayAt = 0;
@@ -97,37 +98,11 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
     if (!this.body) {
       return;
     }
-
-    const isSide = this.facing === "side";
-    const baseWidth = isSide ? 40 : 24;
-    const baseHeight = isSide ? 24 : 40;
-    const bodyWidth = Math.round(baseWidth * 0.75);
-    const bodyHeight = Math.round(baseHeight * 0.75);
-    const baseX = (this.width - baseWidth) / 2;
-    const baseY = (this.height - baseHeight) / 2;
-    const shrinkX = (baseWidth - bodyWidth) / 2;
-    const shrinkY = (baseHeight - bodyHeight) / 2;
-
-    let offsetX = baseX + shrinkX;
-    let offsetY = baseY + shrinkY;
-
-    if (this.facing === "down") {
-      offsetY = this.height - baseHeight - 6 + shrinkY;
-    } else if (this.facing === "up") {
-      offsetY = 6 + shrinkY;
-    } else if (this.facing === "side") {
-      offsetY = baseY + 18 + shrinkY;
-      offsetX = this.flipX
-        ? 38 + shrinkX
-        : this.width - baseWidth - 38 + shrinkX;
-    }
-
-    if (this.useDashHitboxOffset && this.facing === "side") {
-      offsetX += this.flipX ? 54 : -54;
-    }
-
-    this.body.setSize(bodyWidth, bodyHeight, false);
-    this.body.setOffset(offsetX, offsetY);
+    this.body.setSize(BODY_SIZE, BODY_SIZE, false);
+    this.body.setOffset(
+      (this.width - BODY_SIZE) / 2 + BODY_OFFSET_X,
+      (this.height - BODY_SIZE) / 2 + BODY_OFFSET_Y
+    );
   }
 
   update() {
@@ -167,26 +142,20 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
       this.facing = "side";
     }
     if (!anim && up?.isDown) {
-      const dashUpKey = this.scene.anims.exists("dash-up")
-        ? "dash-up"
-        : "walk-up";
+      const dashUpKey = this.scene.anims.exists("dash-up") ? "dash-up" : "walk-up";
       anim = wantsDashAnim ? dashUpKey : "walk-up";
       this.facing = "up";
     }
     if (!anim && down?.isDown) {
-      const dashDownKey = this.scene.anims.exists("dash-down")
-        ? "dash-down"
-        : "walk-down";
+      const dashDownKey = this.scene.anims.exists("dash-down") ? "dash-down" : "walk-down";
       anim = wantsDashAnim ? dashDownKey : "walk-down";
       this.facing = "down";
     }
 
     const isNowMoving = vx !== 0 || vy !== 0;
-    this.useDashHitboxOffset = wantsDashAnim && this.facing === "side";
 
     if (!anim) {
       this.isMoving = false;
-      this.useDashHitboxOffset = false;
       if (this.cartMoveSound?.isPlaying) {
         this.cartMoveSound.stop();
       }
